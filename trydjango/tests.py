@@ -15,5 +15,3 @@ class TryDjangoConfigTest(TestCase):
         except Exception as e:
             msg = f'Weak Secret Key {e.messages},'
             self.fail(msg)
-
-
