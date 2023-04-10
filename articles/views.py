@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.http import Http404
 
 from .forms import ArticleForm
@@ -8,19 +9,14 @@ from .models import Article
 
 
 def article_search_view(request):
-    query_dict = request.GET  # this is dictionary
-    # query = query_dict.get("q")  # <input type="text" name="q" placeholder="Search" />
-
-    try:
-        query = int(query_dict.get("q"))
-    except:  # ValueError should be near except
-        query = None
-
-    article_obj = None
+    query = request.GET.get('q')
+    qs = Article.objects.all()
     if query is not None:
-        article_obj = Article.objects.get(id=query)
+        lookups = Q(title__icontains=query) | Q(content__icontains=query)
+
+        qs = Article.objects.filter(lookups)
     context = {
-        "object": article_obj
+        "object_list": qs
     }
     return render(request, 'articles/search.html', context=context)
 
