@@ -13,6 +13,7 @@ def article_search_view(request):
     qs = Article.objects.all()
     if query is not None:
         lookups = Q(title__icontains=query) | Q(content__icontains=query)
+
         qs = Article.objects.filter(lookups)
     context = {
         "object_list": qs
