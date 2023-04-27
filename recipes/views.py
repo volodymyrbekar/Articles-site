@@ -8,10 +8,10 @@ from .forms import RecipeForm
 
 
 @login_required
-def recipe_list_view(request, id=None):
+def recipe_list_view(request):
     qs = Recipe.objects.filter(user=request.user)
     context = {
-        "objects_list": qs
+        "object_list": qs
     }
     return render(request, "recipes/list.html", context)
 
@@ -42,7 +42,7 @@ def recipe_create_view(request):
 @login_required
 def recipe_update_view(request, id=None):
     obj = get_object_or_404(Recipe, id=id, user=request.user)
-    form = RecipeForm(request.POST or None, instance=obj)
+    form = RecipeForm(request.POST or None,instance=obj)
     context = {
         "form": form,
         "object": obj
