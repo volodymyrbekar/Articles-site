@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.forms.models import modelformset_factory  # model form for qs
 from django.shortcuts import redirect, render, get_object_or_404
 
-from .models import Recipe
-from .forms import RecipeForm
+from .models import Recipe, RecipeIngredient
+from .forms import RecipeForm, RecipeIngredientForm
 
 #  CRUD -> Create Retrieve Update & Delete
 
@@ -42,13 +43,23 @@ def recipe_create_view(request):
 @login_required
 def recipe_update_view(request, id=None):
     obj = get_object_or_404(Recipe, id=id, user=request.user)
-    form = RecipeForm(request.POST or None,instance=obj)
+    form = RecipeForm(request.POST or None, instance=obj)
+    # Formset = modelformset_factory(Model, form=ModelForm, extra=0)
+    RecipeIngredientFormset = modelformset_factory(RecipeIngredient, form=RecipeIngredientForm, extra=0)
+    qs = obj.recipeingredient_set.all()
+    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
     context = {
         "form": form,
+        "formset": formset,
         "object": obj
     }
-    if form.is_valid():
-        form.save()
+    if all([form.is_valid(), formset.is_valid()]):
+        parent = form.save(commit=False)
+        parent.save()
+        for form in formset:
+            child = form.save(commit=False)
+            if child.recipe is None:
+                child.recipe = parent
+            child.save()
         context['message'] = 'Data saved.'
-        return redirect(obj.get_absolute_url())
     return render(request, "recipes/create-update.html", context)
