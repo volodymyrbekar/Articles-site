@@ -1,0 +1,195 @@
+[
+{
+    "model": "recipes.recipe",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "name": "new one",
+        "description": "test",
+        "directions": "",
+        "timestamp": "2023-04-12T20:08:39.919Z",
+        "updated": "2023-04-26T19:05:11.624Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "name": "Borshch",
+        "description": "here is description",
+        "directions": "here is my directions",
+        "timestamp": "2023-04-12T20:09:03.226Z",
+        "updated": "2023-05-12T18:18:43.614Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 3,
+    "fields": {
+        "user": 2,
+        "name": "Varenyky",
+        "description": "varenyky with cheese",
+        "directions": "",
+        "timestamp": "2023-04-26T18:38:26.417Z",
+        "updated": "2023-04-26T18:49:35.794Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 4,
+    "fields": {
+        "user": 2,
+        "name": "test",
+        "description": "here is me",
+        "directions": "",
+        "timestamp": "2023-04-26T19:00:44.430Z",
+        "updated": "2023-04-26T19:00:44.430Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 5,
+    "fields": {
+        "user": 2,
+        "name": "New Recipe",
+        "description": "",
+        "directions": "",
+        "timestamp": "2023-04-27T09:08:12.280Z",
+        "updated": "2023-04-27T09:08:12.280Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 1,
+    "fields": {
+        "recipe": 1,
+        "name": "carrot",
+        "description": null,
+        "quantity": "1/4",
+        "quantity_as_float": 0.25,
+        "unit": "gram",
+        "directions": "",
+        "timestamp": "2023-04-20T16:25:04.687Z",
+        "updated": "2023-04-25T08:20:37.938Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 2,
+    "fields": {
+        "recipe": 2,
+        "name": "tomat pasta",
+        "description": null,
+        "quantity": "1/43",
+        "quantity_as_float": 0.023255813953488372,
+        "unit": "gram",
+        "directions": "",
+        "timestamp": "2023-04-24T18:36:13.750Z",
+        "updated": "2023-04-25T07:04:54.382Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 3,
+    "fields": {
+        "recipe": 1,
+        "name": "Hello world",
+        "description": null,
+        "quantity": "1.5",
+        "quantity_as_float": 1.5,
+        "unit": "pound",
+        "directions": "",
+        "timestamp": "2023-04-24T19:26:09.178Z",
+        "updated": "2023-04-25T08:21:37.976Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 4,
+    "fields": {
+        "recipe": 3,
+        "name": "Cheese",
+        "description": "home made cheese",
+        "quantity": "1/2",
+        "quantity_as_float": 0.5,
+        "unit": "kg",
+        "directions": "",
+        "timestamp": "2023-04-26T18:49:08.890Z",
+        "updated": "2023-04-26T18:49:08.890Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 5,
+    "fields": {
+        "recipe": 3,
+        "name": "potato",
+        "description": "any",
+        "quantity": "1",
+        "quantity_as_float": 1.0,
+        "unit": "kg",
+        "directions": "",
+        "timestamp": "2023-04-26T18:49:32.087Z",
+        "updated": "2023-04-26T18:49:32.087Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 6,
+    "fields": {
+        "recipe": 3,
+        "name": "potato",
+        "description": "any",
+        "quantity": "1",
+        "quantity_as_float": 1.0,
+        "unit": "kg",
+        "directions": "",
+        "timestamp": "2023-04-26T18:49:35.796Z",
+        "updated": "2023-04-26T18:49:35.796Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 7,
+    "fields": {
+        "recipe": 2,
+        "name": "potato",
+        "description": "common patato",
+        "quantity": "500",
+        "quantity_as_float": 500.0,
+        "unit": "gram",
+        "directions": "",
+        "timestamp": "2023-05-12T18:18:43.620Z",
+        "updated": "2023-05-12T18:18:43.620Z",
+        "active": true
+    }
+},
+{
+    "model": "recipes.recipeingredient",
+    "pk": 8,
+    "fields": {
+        "recipe": 2,
+        "name": "carrot",
+        "description": "-",
+        "quantity": "200",
+        "quantity_as_float": 200.0,
+        "unit": "gram",
+        "directions": "",
+        "timestamp": "2023-05-12T18:18:43.621Z",
+        "updated": "2023-05-12T18:18:43.621Z",
+        "active": true
+    }
+}
+]
