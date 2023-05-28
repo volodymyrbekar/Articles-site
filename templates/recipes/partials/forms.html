@@ -1,33 +1,20 @@
 <form action="." method="POST" hx-post="." hx-swap="outerHTML">
-        {% csrf_token %}
-        {% if message %}
-            <p>message</p>
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="{% if field.field.required %} {{ form.required_css_class}} {% endif %} " >
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
         {% endif %}
-        {% for field in form %}
-        <div class="{% if field.field.required %}{{ form.required_css_class }}{% endif %}">
-            {{field.errors}}
-            {{ field.label_tag }} {{ field }}
-            {% if field.help_text %}
-            <p class="help">{{ field.help_textm|safe }}</p>
-            {% endif %}
-        </div>
-        {% endfor %}
-
-        {% if formset %}
-        <h2> Ingredients </h2>
-        {{ formset.management_form}}
-        <div id="ingredient-form-list">
-            {% for form in formset %}
-                <div class="ingredient-form">
-                    {{form.as_p}}
-                </div>
-            {% endfor %}
+    </div>
+    {% endfor %}
 
 
-        </div>
-
-        <div id="empty-form" class="hidden"  >{{ formset.empty_form.as_p }}</div>
-        <button id="add-more" type="submit">Add more</button>
-        {% endif %}
-        <button style='margin-top:10px' type="submit">Save</button>
-    </form>
+    <div class="htmx-indicator">Loading...</div>
+    <button class="htmx-inverted-indicator" style='margin-top:10px' type="submit">Save</button>
+    {% if message %}
+        <p>message</p>
+    {% endif %}
+</form>
