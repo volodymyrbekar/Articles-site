@@ -54,6 +54,15 @@ def recipe_create_view(request):
         obj = form.save(commit=False)
         obj.user = request.user
         obj.save()
+        if request.htmx:
+            headers = {
+                "HX-PUSH": obj.get_absolute_url()
+            }
+            return HttpResponse("Created", headers=headers)
+            # context = {
+            #     "object": obj
+            # }
+            # return render(request, "recipes/partials/detail.html", context, headers=headers)
         return redirect(obj.get_absolute_url())
     return render(request, "recipes/create-update.html", context)
 
@@ -74,6 +83,7 @@ def recipe_update_view(request, id=None):
     if request.htmx:
         return render(request, "recipes/partials/forms.html", context)
     return render(request, "recipes/create-update.html", context)
+
 
 @login_required
 def recipe_ingredient_update_hx_view(request, parent_id=None, id=None):
