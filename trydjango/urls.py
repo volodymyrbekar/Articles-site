@@ -16,11 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from articles.views import (
-    article_create_view,
-    article_detail_view,
-    article_search_view
-)
+from search.views import search_view
+
 from accounts.views import (
     login_view,
     logout_view,
@@ -32,6 +29,7 @@ urlpatterns = [
     path('', home_view),  # index / home
     path('pantry/recipes/', include('recipes.urls')),
     path('articles/', include('articles.urls')),
+    path('search/', search_view, name='search'),
     path('admin/', admin.site.urls),
     path('login/', login_view),
     path('logout/', logout_view),
