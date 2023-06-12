@@ -1,3 +1,6 @@
+<div class="row">
+    <div class="col-12 colmd-98>
+
 <h1> {{object.name}}</h1>
     {% if object.get_edit_url %}
     <small>
@@ -11,8 +14,21 @@
 <p>{{ object.description }}</p>
 <p>{{ object.directions }}</p>
 
+</div>
+    <div class="col-12 col-md-4">
+
+
 {% for ingredient in object.get_ingredients_children %}
-    <h1> {{ingredient.name}} </h1>
-    <p>{{ ingredient.as_imperial }}</p>
-    <p>{{ ingredient.as_mks }}</p>
+{% include 'recipes/partials/ingredient-inline.html' with object=ingredient %}
+
 {% endfor %}
+ <h3>Ingredients</h3>
+{% for ingredient in object.get_ingredients_children %}
+    {% include 'recipes/partials/ingredient-inline.html' with object=ingredient %}
+{% endfor %}
+{% if new_ingredient_url %}
+    <div id="ingredient-create">
+    </div>
+<button hx-get="{{ new_ingredient_url }}" hx-trigger="click" hx-tagret="#ingredient-create" > Add ingredient</button>
+        </div>
+</div>
